@@ -29,34 +29,52 @@ class _DiceAppState extends State<DiceApp> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: FlatButton(
-              onPressed: () {
-                setState(() {
-                  leftImageNumber = Random().nextInt(6) + 1;
-                });
-                print('left button got pressed');
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset('images/dice$leftImageNumber.png'),
+      child: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      leftImageNumber = Random().nextInt(6) + 1;
+                    });
+                    print('left button got pressed');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Image.asset('images/dice$leftImageNumber.png'),
+                  ),
+                ),
               ),
-            ),
+              Expanded(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      rightImageNumber = Random().nextInt(6) + 1;
+                    });
+                    print('right button got pressed');
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Image.asset('images/dice$rightImageNumber.png'),
+                  ),
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            child: FlatButton(
-              onPressed: () {
-                setState(() {
-                  rightImageNumber = Random().nextInt(6) + 1;
-                });
-                print('right button got pressed');
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset('images/dice$rightImageNumber.png'),
-              ),
+          const SizedBox(height: 50),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                leftImageNumber = Random().nextInt(6) + 1;
+                rightImageNumber = Random().nextInt(6) + 1;
+              });
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.white,
+              size: 50,
             ),
           ),
         ],
